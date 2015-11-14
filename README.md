@@ -3,9 +3,9 @@
 
 
 
-#このプロジェクトは、ApacheLicese2.0で提供されているTweet4jを使っています。
+###このプロジェクトは、ApacheLicese2.0で提供されているTweet4jを使っています。
 - [Tweet4j][tweet4j]
-- [ApacheLisence2.0][apachelisence2]
+- [ApacheLisence2.0][apachelisece2]
 
 
 [tweet4j]: http://twitter4j.org/ "Tweet4j"
