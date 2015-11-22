@@ -2,19 +2,21 @@ package Maze;
 
 public class MazeGenerate {
 
-	private int[][] map;// 0 or 1
-	private Block[][] block;// WALL or ROAD クラスオブジェクト
+	private int[][] map;// 0 or 1 or 2 or 3 or 4
+	private Block[][] block;
 
 	private int[] dx = {0, 1, 0, -1};
 	private int[] dy = {1, 0, -1, 0};
 	
 
-	public void init(Player player, int side){
+	public void init(MazeGenerate maze, Player player, int side){
 		if ( side%2 == 1){
 			map = new int[side][side];
 			player.setPlayer(side-2, side-2);
 			makeMaze();
-			setBlock(side);			
+			maze.setMap(1,1,4);
+
+			setBlock(side);	
 		}else{
 			System.out.println("奇数を入力してください");
 		}
@@ -32,12 +34,19 @@ public class MazeGenerate {
 		return this.block;
 	}
 	
+	public Block getPointBlock(int i,int j){
+		return this.block[i][j];
+	}
+	
 	public void setMap(int x, int y, int i){
 		//mapの(x,y)座標に キャラクター or 床 or 壁 をセット
 		map[x][y] = i;
 	}	
 	public int[][] getMap(){
 		return this.map;
+	}
+	public int getPointMap(int i,int j){
+		return this.map[i][j];
 	}
 
 	//迷路生成
