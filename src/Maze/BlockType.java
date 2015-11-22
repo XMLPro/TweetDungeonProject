@@ -4,5 +4,5 @@ public enum BlockType {
 	WALL,
 	PLAYER,
 	START,
-	GALL
+	GOAL
 }
