@@ -10,7 +10,7 @@
 
 	<servlet>
 		<servlet-name>root</servlet-name>
-		<servlet-class>TweetDungeon</servlet-class>
+		<servlet-class>ROOT</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>root</servlet-name>

@@ -1,4 +1,4 @@
-package Maze;
+package maze;
 public enum BlockType {
 	ROAD,
 	WALL,

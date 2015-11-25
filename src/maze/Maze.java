@@ -1,5 +1,5 @@
-package Maze;
+package maze;
 
 public class Maze{
-	
+
 }
