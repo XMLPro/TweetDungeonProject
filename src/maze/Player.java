@@ -19,22 +19,46 @@ public class Player {
 		return this.player_x;
 	}
 
-	//プレイヤー場所
-	//移動先衝突判定
-	public void Move(MazeGenerate maze, Block[][] block, PlayerMoveCommand movecommand){
-		if(movecommand == PlayerMoveCommand.UP && block[this.player_y-1][this.player_x].isMovable()){ //上コマンドかつ移動先がWALLじゃない
+	//移動(ゴールでtrueを, それ以外でfalseを返す)
+	public boolean Move(MazeGenerate maze, PlayerMoveCommand movecommand){
+		if(movecommand == PlayerMoveCommand.UP && maze.getPointBlock(this.player_y-1,this.player_x).isMovable()){
+			//上コマンド
 			maze.setMap(this.player_y, this.player_x, 0);//移動元を0にする
 			this.player_y-=1;
-		}else if(movecommand == PlayerMoveCommand.DOWN && block[this.player_y+1][this.player_x].isMovable()){//
+			if(maze.getPointMap(this.player_y,this.player_x) == 4){//移動先マスがゴールの場合
+				return true;
+			}
+			return false;
+		}else if(movecommand == PlayerMoveCommand.DOWN && maze.getPointBlock(this.player_y+1,this.player_x).isMovable()){
+			//下コマンド
 			maze.setMap(this.player_y, this.player_x, 0);//移動元を0にする
 			this.player_y+=1;
+<<<<<<< HEAD:src/maze/Player.java
 		}else if(movecommand == PlayerMoveCommand.LEFT && block[this.player_y][this.player_x-1].isMovable()){//左
+=======
+			if(maze.getPointMap(this.player_y,this.player_x) == 4){//移動先マスがゴールの場合
+				return true;
+			}
+			return false;
+		}else if(movecommand == PlayerMoveCommand.LEFT && maze.getPointBlock(this.player_y,this.player_x-1).isMovable()){
+			//左コマンド
+>>>>>>> 59d060a306bd602f82d5dc55926f999b9cdd4570:src/Maze/Player.java
 			maze.setMap(this.player_y, this.player_x, 0);//移動元を0にする
 			this.player_x-=1;
-		}else if(movecommand == PlayerMoveCommand.RIGHT && block[this.player_y][this.player_x+1].isMovable()){//右
+			if(maze.getPointMap(this.player_y,this.player_x) == 4){//移動先マスがゴールの場合
+				return true;
+			}
+			return false;
+		}else if(movecommand == PlayerMoveCommand.RIGHT && maze.getPointBlock(this.player_y,this.player_x+1).isMovable()){
+			//右コマンド
 			maze.setMap(this.player_y, this.player_x, 0);//移動元を0にする
 			this.player_x+=1;
+			if(maze.getPointMap(this.player_y,this.player_x) == 4){//移動先マスがゴールの場合
+				return true;
+			}
+			return false;
 		}
+		return false;
 
 	}
 

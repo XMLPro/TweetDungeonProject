@@ -18,7 +18,7 @@ public class Block {
 		}else if(blockType == 3){
 			this.blockType = BlockType.START;
 		}else if(blockType == 4){
-			this.blockType = BlockType.GALL;
+			this.blockType = BlockType.GOAL;
 		}
 	}
 
@@ -28,6 +28,12 @@ public class Block {
 			return true;
 		}else if (this.blockType == BlockType.WALL) {
 			return false;
+		}else if (this.blockType == BlockType.PLAYER) {
+			return false;
+		}else if (this.blockType == BlockType.START) {
+			return true;
+		}else if (this.blockType == BlockType.GOAL) {
+			return true;
 		}
 		return false;
 	}
