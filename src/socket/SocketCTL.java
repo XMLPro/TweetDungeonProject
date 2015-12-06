@@ -12,7 +12,7 @@ import javax.websocket.server.ServerEndpoint;
 
 
 @ServerEndpoint(value = "/websocket")
-public class WebSocketCTL {
+public class SocketCTL {
     private static Set<Session> ses = new CopyOnWriteArraySet<>();
     @OnOpen
     public void onOpen(Session session){
@@ -23,7 +23,6 @@ public class WebSocketCTL {
     @OnMessage
     public void onMessage(String text){
             if(text.equals("bot")){
-                    TestBot.start();
              }else{
                 sendMessage(text);
              }

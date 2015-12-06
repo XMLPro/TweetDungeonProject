@@ -14,13 +14,8 @@ public class MazeGenerate {
 			map = new int[side][side];
 			player.setPlayer(side-2, side-2);
 			makeMaze();
-<<<<<<< HEAD:src/maze/MazeGenerate.java
-			setBlock(side);
-=======
 			maze.setMap(1,1,4);
-
 			setBlock(side);
->>>>>>> 59d060a306bd602f82d5dc55926f999b9cdd4570:src/Maze/MazeGenerate.java
 		}else{
 			System.out.println("奇数を入力してください");
 		}

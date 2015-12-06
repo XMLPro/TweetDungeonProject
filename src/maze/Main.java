@@ -16,11 +16,6 @@ public class Main {
 		Scanner scan = new Scanner(System.in);//(1なら上, 2なら下, 3なら左, 4なら右)
 
 		for (int i = 0; i < 25; i++) {
-<<<<<<< HEAD:src/maze/Main.java
-
-			player1.Move(maze1, maze1.getBlock(), map.get(scan.nextInt()));
-=======
->>>>>>> 59d060a306bd602f82d5dc55926f999b9cdd4570:src/Maze/Main.java
 			maze1.setMap(player1.getPlayerX(), player1.getPlayerY(), 2);
 			int[][] a = maze1.getMap();
 
