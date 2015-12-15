@@ -1,0 +1,23 @@
+.block{
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+.win{
+  height: 50px;
+  width: 100px;
+  margin-left: 50px;
+}
+
+.black{
+  background-color: black;
+}
+
+.white{
+  background-color: white;
+}
+
+.clr{
+  clear: both;
+}
