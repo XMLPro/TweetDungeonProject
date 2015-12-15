@@ -1,4 +1,4 @@
-package controllers.hashGet;
+package models.hashGet;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
