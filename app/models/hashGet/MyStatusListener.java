@@ -1,4 +1,4 @@
-package controllers.hashGet;
+package models.hashGet;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
