@@ -28,17 +28,51 @@
 <!--ここから-->
 
 <!--ナビゲーションバー部分-->
-<nav class="navbar navbar-inverse navbar-fixed-top"></nav>
-
-<nav class="navbar navbar-inverse">
-  <div class="navbar-header"></div>
-  <div id="nav-content"></div>
-</nav>
-
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-header">
-<!--    <a class="navbar-brand" href="#">LOGO</a> -->
+    
+    <!--ブランド名 ロゴ名の表示-->
+    <a class="navbar-brand" href="#">LOGO</a>
+    
+    <!--トグルボタンの設置-->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></console.htmlspconsole   </button>
   </div>
-
+  <div id="nav-content" class="collapse navbar-collapse">
+    
+    <!--リンクのリスト メニューリスト-->
+    <ul class="nav navbar-nav">
+      <li><a href="console.html">console</a></li>
+      <li><a href="">Link2</a></li>
+      <li><a href="">Link3</a></li>
+      
+      <!--ドロップダウン化するliタグ-->
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" href="">Drop  <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Link1</a></li>
+          <li><a href="#">Link2</a></li>
+          <li><a href="#">Link3</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Link A</a></li>
+          <li class="divider"></li>
+          <li><a href="#">LInk B</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+    
+    <!--検索フォーム-->
+    <form class="navbar-form navbar-right" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+</nav>
 <!--ナビゲーションバーここまで-->
 
 <!--ヘッダー部分-->
@@ -47,7 +81,6 @@
 
       <div class="container" style="background:xmlproKanban.jpg;">
         <h1>迷路</h1>
-        <marquee direction="方向" behavior="動作">流す文字</marquee>
         <p>＃XMLProでツイートしてみよう</p>
 <!--twitterボタン-->
     <a href="https://twitter.com/intent/tweet?button_hashtag=XMLPro" class="twitter-hashtag-button" data-related="hira_831">Tweet #XMLPro</a>
@@ -75,7 +108,6 @@
 
         <form>
         <center>
-        <a href="console.html" class="button button-pill button-primary">ひらく</a>
         </center>
         </form>
       </div>
