@@ -93,7 +93,7 @@ class MyStatusListener implements  Runnable, StatusListener {
 				e.printStackTrace();
 			}
 			String str = this.countCommand();
-			System.out.println(str);
+			//System.out.println(str);
 		}
 	}
 
@@ -137,10 +137,11 @@ class MyStatusListener implements  Runnable, StatusListener {
 		});
 
 		// 最大のvalueのkeyを取得
-		for (Map.Entry<String, Integer> e : entries) {
-			System.out.println(e.getKey() + " " + e.getValue());
-		}
-		System.out.println(entries.iterator().next().getKey());
+		//for (Map.Entry<String, Integer> e : entries) {
+		//	System.out.println(e.getKey() + " " + e.getValue());
+		//}
+		//[:w
+        //System.out.println(entries.iterator().next().getKey());
 
 		return entries.iterator().next().getKey();
 	}
