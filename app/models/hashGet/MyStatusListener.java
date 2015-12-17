@@ -1,4 +1,4 @@
-package hashGet;
+package models.hashGet;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,7 +22,7 @@ class MyStatusListener implements StatusListener{
 	private static final String ACCESS_TOKEN = "2368731091-PiysdxwrqlADgNNAjYFfeIZy7n1b4J8lnkil7tm";
 	private static final String ACCESS_TOKEN_SECRET = "lUTLXabJFiO05Lq1hweOorsVGiPhmW6EcXWWc70FhzqEi";
 	// 取得するハッシュタグ
-	private static String track = "#はっしゅてすと";
+	private static String[] track = {"#はっしゅてすと"};
 	// 大人数のときのツイートを入れるリスト
 	private List buf = new ArrayList();
 	// 前のツイートの時間（大人数との切り替え）
@@ -44,7 +44,7 @@ class MyStatusListener implements StatusListener{
 		return ACCESS_TOKEN_SECRET;
 	}
 
-	public static String hash() {
+	public static String[] hash() {
 		return track;
 	}
 
@@ -53,7 +53,8 @@ class MyStatusListener implements StatusListener{
 	public void onStatus(Status status) {
 		// ツイート本文
 		String text = status.getText();
-		text = text.replace(track, "");
+        for(String item: track)
+    		text = text.replace(item , "");
 		text = text.replaceAll("\n", "");
 
 		// 時間取得
@@ -159,7 +160,7 @@ class MyStatusListener implements StatusListener{
 		// 検索のフィルター作成
 		FilterQuery filter = new FilterQuery();
 		// ハッシュタグ指定
-		String track = MyStatusListener.hash();
+		String[] track = MyStatusListener.hash();
 		filter.track(track);
 		// ハッシュタグでフィルター
 		twStream.filter(filter);
