@@ -17,10 +17,11 @@ import twitter4j.conf.ConfigurationBuilder;
 
 //class MyStatusListener implements StatusListener, Runnable {
 class MyStatusListener implements StatusListener{
-	private static final String CONSUMER_KEY = "";
-	private static final String CONSUMER_SECRET = "";
-	private static final String ACCESS_TOKEN = "";
-	private static final String ACCESS_TOKEN_SECRET = "";
+	private static final String CONSUMER_KEY = Key.         CONSUMER_KEY       ;
+	private static final String CONSUMER_SECRET = Key.      CONSUMER_SECRET    ;
+	private static final String ACCESS_TOKEN = Key.         ACCESS_TOKEN       ;
+	private static final String ACCESS_TOKEN_SECRET = Key.  ACCESS_TOKEN_SECRET;
+
 	// 取得するハッシュタグ
 	private static String[] track = {"#はっしゅてすと"};
 	// 大人数のときのツイートを入れるリスト
