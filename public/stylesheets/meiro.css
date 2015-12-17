@@ -11,11 +11,11 @@
 }
 
 .black{
-  background-color: black;
+  background: url('../images/block.png');
 }
 
 .white{
-  background-color: white;
+  background: url('../images/land.png');
 }
 
 .clr{

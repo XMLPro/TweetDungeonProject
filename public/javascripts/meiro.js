@@ -6,16 +6,6 @@ var ary = [
 
 var position = [1, 1];
 
-// for (var i = 0; i < 2; i++) {
-//   document.write("<p>");
-//
-//   for (var j = 0; j < 2; j++) {
-//     document.write("[" + i + "][" + j + "] = " + ary[i][j] + "<br />");
-//   }
-//
-//   document.write("</p>");
-// }
-
 function init() {
   var map = document.getElementById('map');
 
@@ -36,7 +26,7 @@ function init() {
       } else if (ary[i][j] == 2) {
         var character = document.createElement('img');
         character.className = "block";
-        character.src = 'human.png';
+        character.src = 　'../../../public/images/human.png';
         map.appendChild(character);
       } else {
         alert("blockError");
