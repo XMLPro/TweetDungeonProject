@@ -17,10 +17,10 @@ import twitter4j.conf.ConfigurationBuilder;
 
 //class MyStatusListener implements StatusListener, Runnable {
 class MyStatusListener implements StatusListener{
-	private static final String CONSUMER_KEY = "CJrzIAruDJtnKJY4mRw5eFuQU";
-	private static final String CONSUMER_SECRET = "k2QNSc9FSwPlBlrKt3hkHwBq1qvbpIl9qRFyKY9xlbB5WSkeZb";
-	private static final String ACCESS_TOKEN = "2368731091-PiysdxwrqlADgNNAjYFfeIZy7n1b4J8lnkil7tm";
-	private static final String ACCESS_TOKEN_SECRET = "lUTLXabJFiO05Lq1hweOorsVGiPhmW6EcXWWc70FhzqEi";
+	private static final String CONSUMER_KEY = "";
+	private static final String CONSUMER_SECRET = "";
+	private static final String ACCESS_TOKEN = "";
+	private static final String ACCESS_TOKEN_SECRET = "";
 	// 取得するハッシュタグ
 	private static String[] track = {"#はっしゅてすと"};
 	// 大人数のときのツイートを入れるリスト
