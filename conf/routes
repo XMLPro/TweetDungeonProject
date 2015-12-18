@@ -5,6 +5,10 @@
 # Home page
 GET     /                                       Application.index
 
+# websockets
+WS		/twi_st									WebSocket.sendmes
+WS		/map_st									WebSocket.sendpoint
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
