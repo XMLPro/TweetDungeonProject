@@ -25,40 +25,41 @@ public class Player {
 			// 上コマンド
 			maze.setMap(this.player_y, this.player_x, 0);// 移動元を0にする
 			this.player_y -= 1;
-			if (maze.getPointMap(this.player_y, this.player_x) == 4) {// 移動先マスがゴールの場合
-				return true;
-			}
-			return false;
+			maze.setMap(this.player_y, this.player_x, 4);// 現在位置を4にする
+			return IsGoalBlock(maze);
 		} else if (movecommand == PlayerMoveCommand.DOWN
 				&& maze.getPointBlock(this.player_y + 1, this.player_x).isMovable()) {
 			// 下コマンド
 			maze.setMap(this.player_y, this.player_x, 0);// 移動元を0にする
 			this.player_y += 1;
-			if (maze.getPointMap(this.player_y, this.player_x) == 4) {// 移動先マスがゴールの場合
-				return true;
-			}
-			return false;
+			maze.setMap(this.player_y, this.player_x, 4);// 現在位置を4にする
+			return IsGoalBlock(maze);
 		} else if (movecommand == PlayerMoveCommand.LEFT
 				&& maze.getPointBlock(this.player_y, this.player_x - 1).isMovable()) {
 			// 左コマンド
 			maze.setMap(this.player_y, this.player_x, 0);// 移動元を0にする
 			this.player_x -= 1;
-			if (maze.getPointMap(this.player_y, this.player_x) == 4) {// 移動先マスがゴールの場合
-				return true;
-			}
-			return false;
+			maze.setMap(this.player_y, this.player_x, 4);// 現在位置を4にする
+			return IsGoalBlock(maze);
 		} else if (movecommand == PlayerMoveCommand.RIGHT
 				&& maze.getPointBlock(this.player_y, this.player_x + 1).isMovable()) {
 			// 右コマンド
 			maze.setMap(this.player_y, this.player_x, 0);// 移動元を0にする
 			this.player_x += 1;
-			if (maze.getPointMap(this.player_y, this.player_x) == 4) {// 移動先マスがゴールの場合
-				return true;
-			}
-			return false;
+			maze.setMap(this.player_y, this.player_x, 4);// 現在位置を4にする
+			return IsGoalBlock(maze);
 		}
 		return false;
 
 	}
+
+	//ゴールでtrueを, それ以外でfalseを返す
+    private boolean IsGoalBlock(MazeGenerate maze){
+        if (maze.getPointMap(this.player_y, this.player_x) == 4) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }
