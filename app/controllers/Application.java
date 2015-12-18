@@ -13,6 +13,10 @@ public class Application extends Controller {
         render();
     }
 
+    public static void console() {
+        render();
+    }
+
     public static void mazeGenerate(){
 		MazeGenerate maze1 = new MazeGenerate();
 		Player player1 = new Player();

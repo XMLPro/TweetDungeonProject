@@ -1,14 +1,9 @@
-package controllers.hashGet;
+package models.hashGet;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import twitter4j.FilterQuery;
 import twitter4j.StallWarning;
@@ -20,15 +15,15 @@ import twitter4j.TwitterStreamFactory;
 import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
+//class MyStatusListener implements StatusListener, Runnable {
+class MyStatusListener implements StatusListener{
+	private static final String CONSUMER_KEY = Key.         CONSUMER_KEY       ;
+	private static final String CONSUMER_SECRET = Key.      CONSUMER_SECRET    ;
+	private static final String ACCESS_TOKEN = Key.         ACCESS_TOKEN       ;
+	private static final String ACCESS_TOKEN_SECRET = Key.  ACCESS_TOKEN_SECRET;
 
-class MyStatusListener implements  Runnable, StatusListener {
-
-	private static final String CONSUMER_KEY = "";
-	private static final String CONSUMER_SECRET = "";
-	private static final String ACCESS_TOKEN = "";
-	private static final String ACCESS_TOKEN_SECRET = "";
 	// 取得するハッシュタグ
-	private static String[] track = { "#はっしゅてすと" };
+	private static String[] track = {"#はっしゅてすと"};
 	// 大人数のときのツイートを入れるリスト
 	private List buf = new ArrayList();
 	// 前のツイートの時間（大人数との切り替え）
@@ -59,8 +54,8 @@ class MyStatusListener implements  Runnable, StatusListener {
 	public void onStatus(Status status) {
 		// ツイート本文
 		String text = status.getText();
-        for(String tag: track)
-		    text = text.replace(tag, "");
+        for(String item: track)
+    		text = text.replace(item , "");
 		text = text.replaceAll("\n", "");
 
 		// 時間取得
@@ -70,20 +65,23 @@ class MyStatusListener implements  Runnable, StatusListener {
 		time = sdf.format(getTime);
 		String[] vote = { text, time };
 
+		/*
 		// 5秒以内に次のツイートがあった場合に投票になる
 		if (before.getTime() - getTime.getTime() < 5 * 1000) {
 			Date c = new Date();
 			buf.add(vote.clone());
 		} else {
+		*/
 			// ツイート内容表示
 			System.out.println("テキスト:" + text);
 			// Commandクラスでツイート内容を整形
 			Command cm = new Command();
 			cm.com(text, time);
-		}
-		before = getTime;
+		//}
+		//before = getTime;
 	}
 
+	/*
 	// 大人数時の投票システム実行
 	public void run() {
 		while (true) {
@@ -144,6 +142,7 @@ class MyStatusListener implements  Runnable, StatusListener {
 
 		return entries.iterator().next().getKey();
 	}
+*/
 
 	public TwitterStream getTwitterStreaming() {
 		// 認証情報

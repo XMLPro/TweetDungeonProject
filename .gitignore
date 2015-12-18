@@ -11,3 +11,4 @@ eclipse/
 .classpath
 .project
 .settings/
+app/controllers/hashGet/Key.java

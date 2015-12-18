@@ -1,11 +1,11 @@
 #{extends 'main.html' /}
-#{set title:'迷路ゲーム' /}
+#{set title:'コンソール' /}
 
 #{set 'moreStyles'}
-#{stylesheet 'meiro.css' /}
+    #{stylesheet 'console.css' /}
+    #{stylesheet 'buttons.css' /}
 #{/set}
 
-<!--ナビゲーションバー部分-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-header">
 
@@ -53,39 +53,32 @@
   </div>
 </nav>
 <!--ナビゲーションバーここまで-->
-
 <header class="jumbotron">
-
-  <div class="container" style="background:xmlproKanban.jpg;">
-    <h1>迷路</h1>
-    <p>＃XMLProでツイートしてみよう</p>
-    <!--twitterボタン-->
-    <a href="https://twitter.com/intent/tweet?button_hashtag=XMLPro" class="twitter-hashtag-button" data-related="hira_831">Tweet #XMLPro</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="hira_831">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <!--twitterここまで-->
-
-  </div>
 </header>
-
 <div class="container">
   <div class="row">
-    <div class="col-md-3 col-xs-6" id="map">
+    <div class="col-md-offset-2 col-md-10 col-xs-offset-4 col-xs-8" id="map">
+  <table>
+    <tr>
+      <td></td>
+      <td><span class="button-wrap"><a href="#" class="button button-circle button-highlight move" onclick="move_up()">↑</a></span><td>
+      <td><td>
+    </tr>
+    <tr>
+      <td><span class="button-wrap"><a href="#" class="button button-circle button-highlight" onclick="move_left()">←</a></span></td>
+      <td><td>
+      <td><span class="button-wrap"><a href="#" class="button button-circle button-highlight move" onclick="move_right()">→</a></span><br><td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><span class="button-wrap"><a href="#" class="button button-circle button-highlight move" onclick="move_down()">↓</a></span><td>
+      <td><td>
+    </tr>
+  </table>
     </div>
-
-    <form>
-      <center>
-      </center>
-    </form>
   </div>
 </div>
-#{set 'moreScripts'}
-#{script 'meiro.js' /}
-<script type="text/javascript">
-(function () {
-  init();
-}());
-</script>
-#{/set}
+  #{set 'moreScripts'}
+  #{script 'console.js' /}
+  #{/set}
+</html>
