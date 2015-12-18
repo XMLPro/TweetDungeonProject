@@ -1,25 +1,29 @@
 #{extends 'main.html' /}
 #{set title:'迷路ゲーム' /}
 
+#{set 'moreStyles'}
+#{stylesheet 'meiro.css' /}
+#{/set}
 
 <!--ナビゲーションバー部分-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-header">
 
     <!--ブランド名 ロゴ名の表示-->
-    <a class="navbar-brand" href="#">LOGO</a>
+    <a class="navbar-brand" href="/">LOGO</a>
 
     <!--トグルボタンの設置-->
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
-      <span class="icon-bar"></console.htmlspconsole   </button>
+      <span class="icon-bar"></span>
+    </button>
   </div>
   <div id="nav-content" class="collapse navbar-collapse">
 
     <!--リンクのリスト メニューリスト-->
     <ul class="nav navbar-nav">
-      <li><a href="console.html">console</a></li>
+      <li><a href="/Application/console">console</a></li>
       <li><a href="">Link2</a></li>
       <li><a href="">Link3</a></li>
 
@@ -66,17 +70,9 @@
   </div>
 </header>
 
-
-<button type="button" class="btn btn-primary">HOME</button>
-<button type="button" class="btn btn-success">Pray</button>
-<button type="button" class="btn btn-info">Info</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-danger">Danger</button>
-
 <div class="container">
   <div class="row">
     <div class="col-md-3 col-xs-6" id="map">
-      迷路
     </div>
 
     <form>
@@ -85,8 +81,11 @@
     </form>
   </div>
 </div>
-
-
 #{set 'moreScripts'}
 #{script 'meiro.js' /}
+<script type="text/javascript">
+(function () {
+  init();
+}());
+</script>
 #{/set}

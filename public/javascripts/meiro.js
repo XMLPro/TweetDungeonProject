@@ -1,3 +1,5 @@
+//ソケットで迷路のマップデータを取得しaryへ代入後init()処理を実行
+//あるいは、ソケットで動いた方向を送信、各種移動関数を実行して反映させる。
 var ary = [
   [1, 0, 1, 0, 1], //1が黒、0が白
   [0, 2, 0, 0, 0], //2はプレーヤ
@@ -26,7 +28,7 @@ function init() {
       } else if (ary[i][j] == 2) {
         var character = document.createElement('img');
         character.className = "block";
-        character.src = 　'../../../public/images/human.png';
+        character.src = '../../../public/images/human.png';
         map.appendChild(character);
       } else {
         alert("blockError");
