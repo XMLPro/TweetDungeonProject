@@ -3,30 +3,28 @@ package controllers;
 import play.*;
 import play.mvc.Http.WebSocketClose;
 import play.mvc.Http.WebSocketEvent;
+import play.mvc.Scope.Session;
 import play.mvc.WebSocketController;
 
 import java.util.*;
 
 import models.*;
+import models.socket.CheckStreaming;
+import models.socket.ManageSession;
 
 public class WebSocket extends WebSocketController {
 	public static void sendms(){
 		CheckStreaming cs = CheckStreaming.getInstance();
 		while(inbound.isOpen()){
+			ManageSession.createSession(session.getId());
 			WebSocketEvent e = await(inbound.nextEvent());
-			
-			for(String update: e.TextFrame.and(e.TextFrame.Equals("update")).match(e)){
-				for(String twi: cs.getTwis()){
-						outbound.send(twi);
-				}
+			List<String> se = ManageSession.getTweets(session.getId());
+			for(String str: (ArrayList<String>)se){
+				outbound.send(str);
 			}
-			for(String connect: e.TextFrame.and(e.TextFrame.Equals("connect")).match(e)){
-				cs.connect(session.getId());
-			}
-			for(WebSocketClose closed: e.SocketClosed.match(e)) {
-				cs.disconnect(session.getId());
-				Logger.info("Socket closed!");
-			}
+			if(e instanceof WebSocketClose) {
+	            Logger.info("Socket closed!");
+	        }
 		}
 	}
 
