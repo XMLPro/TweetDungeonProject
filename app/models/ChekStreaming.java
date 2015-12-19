@@ -5,15 +5,21 @@ public class CheckSt{
 	private static CheckSt cs = new CheckSt();
 	private	List<String> twis = new ArrayList<String>();
 	private boolean flag;
+	private List<String> connections = new ArrayList<String>();
 
 	// コンストラクタ
 	public CheckSt(){
 		flag = false;
+		//connections = 0;
 	}
 
 	//Instanceを返す
 	public static CheckSt getInstance(){
 		return cs;
+	}
+
+	public void connect(String id){
+		connections.add(id);
 	}
 
 	// Tweetを受け取りフラグを立てるクラス

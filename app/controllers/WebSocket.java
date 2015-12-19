@@ -9,8 +9,17 @@ import models.*;
 
 public class WebSocket extends WebSocketController {
 	public static void sendms(){
+		CheckStreaming cs = CheckStreaming.getInstance();
 		while(inbound.isOpen()){
-			
+			WebSocketEvet e = await(inbound.nextEvent());
+			for(String update: TextFrame.and(Equals("update")).match(e)){
+				for(String str: cs.getTwis()){
+						outbound.send(twis);
+				}
+			}
+			for(String connect: TextFrame.and(Equals("connect")).match(e)){
+				cs.connect(session.getId());
+			}
 		}
 	}
 
