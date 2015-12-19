@@ -9,12 +9,10 @@ import play.mvc.WebSocketController;
 import java.util.*;
 
 import models.*;
-import models.socket.CheckStreaming;
 import models.socket.ManageSession;
 
 public class WebSocket extends WebSocketController {
 	public static void sendms(){
-		CheckStreaming cs = CheckStreaming.getInstance();
 		while(inbound.isOpen()){
 			ManageSession.createSession(session.getId());
 			WebSocketEvent e = await(inbound.nextEvent());
