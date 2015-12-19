@@ -1,5 +1,22 @@
 //ソケットで迷路のマップデータを取得しaryへ代入後init()処理を実行
 //あるいは、ソケットで動いた方向を送信、各種移動関数を実行して反映させる。
+// Create a socket
+var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
+//var socket = new WS('@@{WebSocket.sendms()}')
+//要書き換え必要、サーバー側だと動かない可能性
+var socket = new WS('ws://localhost:9000/twi_st')
+socket.onmessage = function(event) {
+    console.log(event);
+    console.log(event);
+    if(event.btn = 'up')move_up();
+    else if(event.btn = 'down')down_up();
+    else if(event.btn = 'left')left_up();
+    else if(event.btn = 'right')right_up();
+    else if(event.map){
+        ary = event.map;
+        init();
+    }
+}
 var ary = [
   [1, 0, 1, 0, 1], //1が黒、0が白
   [0, 2, 0, 0, 0], //2はプレーヤ
