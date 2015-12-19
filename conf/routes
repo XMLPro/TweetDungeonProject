@@ -6,7 +6,7 @@
 GET     /                                       Application.index
 
 # websockets
-WS		/twi_st									WebSocket.sendmes
+WS		/twi_st									WebSocket.sendms
 WS		/map_st									WebSocket.sendpoint
 
 # Ignore favicon requests
