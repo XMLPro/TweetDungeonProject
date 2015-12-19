@@ -21,6 +21,9 @@ public class CheckSt{
 	public void connect(String id){
 		connections.add(id);
 	}
+	public void disconnect(String id){
+		connentions.remove(connections.indexOf(id));
+	}
 
 	// Tweetを受け取りフラグを立てるクラス
 	public void postSt(String twi){

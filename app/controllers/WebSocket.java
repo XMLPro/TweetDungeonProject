@@ -20,6 +20,10 @@ public class WebSocket extends WebSocketController {
 			for(String connect: TextFrame.and(Equals("connect")).match(e)){
 				cs.connect(session.getId());
 			}
+			for(WebSocketClose closed: SocketClosed.match(e)) {
+				cs.disconnect(session.getId());
+				Logger.info("Socket closed!");
+			}
 		}
 	}
 
