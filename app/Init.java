@@ -5,7 +5,7 @@ import play.jobs.*;
 
 import models.*;
 import models.hashGet.*;
-import models.maze.*;
+//import models.maze.*;
 
 import twitter4j.FilterQuery;
 import twitter4j.StallWarning;

@@ -1,20 +1,20 @@
 package models;
 import java.util.*;
 
-public class CheckSt{
-	private static CheckSt cs = new CheckSt();
+public class CheckStreaming{
+	private static CheckStreaming cs = new CheckStreaming();
 	private	List<String> twis = new ArrayList<String>();
 	private boolean flag;
 	private List<String> connections = new ArrayList<String>();
 
 	// コンストラクタ
-	public CheckSt(){
+	public CheckStreaming(){
 		flag = false;
 		//connections = 0;
 	}
 
 	//Instanceを返す
-	public static CheckSt getInstance(){
+	public static CheckStreaming getInstance(){
 		return cs;
 	}
 
@@ -22,13 +22,13 @@ public class CheckSt{
 		connections.add(id);
 	}
 	public void disconnect(String id){
-		connentions.remove(connections.indexOf(id));
+		connections.remove(connections.indexOf(id));
 	}
 
 	// Tweetを受け取りフラグを立てるクラス
 	public void postSt(String twi){
 		twis.add(twi);
-		cs.UpFlag();
+		cs.upFlag();
 	}
 
 	// falgをたてます
