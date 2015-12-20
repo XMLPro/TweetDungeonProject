@@ -38,7 +38,7 @@ public class WebSocket extends WebSocketController {
 
 	public static void sendpoint(){
 		while(inbound.isOpen()){
-
+			
 		}
 	}
 }
