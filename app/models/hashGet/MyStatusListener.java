@@ -4,6 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import models.socket.*;
+import models.PlayerMoveCommand;
+
+import controllers.*;
 
 import twitter4j.FilterQuery;
 import twitter4j.StallWarning;
@@ -16,7 +20,7 @@ import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 
 //class MyStatusListener implements StatusListener, Runnable {
-class MyStatusListener implements StatusListener{
+public class MyStatusListener implements StatusListener{
 	private static final String CONSUMER_KEY = Key.         CONSUMER_KEY       ;
 	private static final String CONSUMER_SECRET = Key.      CONSUMER_SECRET    ;
 	private static final String ACCESS_TOKEN = Key.         ACCESS_TOKEN       ;
@@ -75,12 +79,18 @@ class MyStatusListener implements StatusListener{
 			// ツイート内容表示
 			System.out.println("テキスト:" + text);
 			ManageSession.postTweet(text);
-			// Commandクラスでツイート内容を整形
-			Command cm = new Command();
-			cm.com(text, time);
+            Init.player1.Move(Init.maze1, commandExtraction(text));
 		//}
 		//before = getTime;
 	}
+
+    private static PlayerMoveCommand commandExtraction(String tweet){
+        if(tweet.indexOf("うえ")!=-1) return PlayerMoveCommand.UP;
+        if(tweet.indexOf("した")!=-1) return PlayerMoveCommand.DOWN;
+        if(tweet.indexOf("みぎ")!=-1) return PlayerMoveCommand.RIGHT;
+        if(tweet.indexOf("ひだり")!=-1) return PlayerMoveCommand.LEFT;
+        return null;
+    }
 
 	/*
 	// 大人数時の投票システム実行

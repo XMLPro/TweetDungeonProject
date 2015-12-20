@@ -1,3 +1,4 @@
+package controllers;
 
 import play.*;
 import play.mvc.*;
@@ -25,9 +26,14 @@ public class Init extends Job{
     //		maze1.init(maze1, player1, 9);// 迷路初期化
     //    }
     public static MazeGenerate maze1;
+    public static Player player1;
     public void doJob() {
         Logger.info("STARTING:::");
         maze1 = new MazeGenerate();
+        player1 = new Player();
+        System.out.println("px: " + player1.getPlayerX());
+        System.out.println("py: " + player1.getPlayerY());
+        maze1.init(maze1, player1, 9);
         //MyStatusListener lisner = new MyStatusListener();
         Tw listener = new Tw();
         TwitterStream stream = listener.getTwitterStreaming();

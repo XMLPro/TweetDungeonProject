@@ -2,7 +2,7 @@ package models;
 
 public class MazeGenerate {
 
-	private int[][] map;// 0 or 1 or 2 or 3 or 4
+	private static int[][] map;// 0 or 1 or 2 or 3 or 4
 	private Block[][] block;
 
 	private int[] dx = {0, 1, 0, -1};
@@ -12,7 +12,7 @@ public class MazeGenerate {
 	public void init(MazeGenerate maze, Player player, int side){
 		if ( side%2 == 1){
 			map = new int[side][side];
-			player.setPlayer(side-2, side-2);
+			player.setPlayer(1, 1);
 			makeMaze();
 			maze.setMap(1,1,4);
 			setBlock(side);
@@ -40,12 +40,20 @@ public class MazeGenerate {
 	public void setMap(int x, int y, int i){
 		//mapの(x,y)座標に キャラクター or 床 or 壁 をセット
 		map[x][y] = i;
+        System.out.println("x: " + x);
+        System.out.println("y: " + y);
+        for(int t=0;t<map.length-1;t++){
+            for(int j=0;j<map[t].length-1;j++){
+                System.out.print(map[t][j]);
+            }
+            System.out.println();
+        }
 	}
 	public int[][] getMap(){
-		return this.map;
+		return map;
 	}
 	public int getPointMap(int i,int j){
-		return this.map[i][j];
+		return map[i][j];
 	}
 
 	//迷路生成
@@ -64,6 +72,8 @@ public class MazeGenerate {
 			map[i][0] = 1;
 			map[i][map[0].length-1] = 1;
 		}
+        //ゴールの作成 - 下の列の１つを床にする。ゴールは3
+        map[map.length-1][map[map.length-1].length-2] = 3;
 
 		// 棒倒し法による支柱をセット
 		for (int i = 1 ; i <= (map.length-2)/2 ; i++){

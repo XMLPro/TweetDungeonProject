@@ -6,16 +6,24 @@ var WS = window['MozWebSocket'] ? MozWebSocket : WebSocket;
 //要書き換え必要、サーバー側だと動かない可能性
 var socket = new WS('ws://localhost:9000/twi_st')
 socket.onmessage = function(event) {
+    console.log("event");
     console.log(event);
-    console.log(event);
-    if(event.btn = 'up')move_up();
-    else if(event.btn = 'down')down_up();
-    else if(event.btn = 'left')left_up();
-    else if(event.btn = 'right')right_up();
-    else if(event.map){
-        ary = event.map;
-        init();
+    str = event.data;
+    line = str.split(":");
+    map = [];
+    for(var i=0;i<line.length-1;i++){
+        map.push(line[i].split(" "));
     }
+
+    //    if(event.btn = 'up')move_up();
+    //    else if(event.btn = 'down')down_up();
+    //    else if(event.btn = 'left')left_up();
+    //    else if(event.btn = 'right')right_up();
+    //    else if(event){
+    ary = map;
+    console.log(map);
+    init();
+    //    }
 }
 var ary = [
     [1, 0, 1, 0, 1], //1が黒、0が白
@@ -26,9 +34,9 @@ var ary = [
 
 var loop = function () {
     setTimeout(function () {
-      socket.send("update");
+        socket.send("updatemap");
         loop();
-    }, 500);
+    }, 1000);
 }
 
 loop();
@@ -52,13 +60,21 @@ function init() {
                 var white = document.createElement('div');
                 white.className = 'block white';
                 map.appendChild(white);
-            } else if (ary[i][j] == 2) {
+            } else if (ary[i][j] == 4) {
                 var character = document.createElement('img');
                 character.className = "block";
                 character.src = '../../../public/images/human.png';
                 map.appendChild(character);
+            } else if (ary[i][j] == 2) {
+                var black = document.createElement('div');
+                black.className = 'block black';
+                map.appendChild(black);
+            } else if (ary[i][j] == 3) {
+                var white = document.createElement('div');
+                white.className = 'block white';
+                map.appendChild(white);
             } else {
-                alert("blockError");
+                console.log("blockError");
             }
 
         }
@@ -69,13 +85,13 @@ function init() {
 }
 
 function test() {
-    alert();
+        socket.send("updatemap");
 }
 
 function move_up() {
     if ((ary[position[0] - 1][position[1]]) == 0) {
         ary[position[0]][position[1]] = 0;
-        ary[position[0] - 1][position[1]] = 2;
+        ary[position[0] - 1][position[1]] = 4;
         position = [position[0] - 1, position[1]];
     }
     init();
@@ -84,7 +100,7 @@ function move_up() {
 function move_down() {
     if ((ary[position[0] + 1][position[1]]) == 0) {
         ary[position[0]][position[1]] = 0;
-        ary[position[0] + 1][position[1]] = 2;
+        ary[position[0] + 1][position[1]] = 4;
         position = [position[0] + 1, position[1]];
     }
     init();
@@ -93,7 +109,7 @@ function move_down() {
 function move_right() {
     if ((ary[position[0]][position[1] + 1]) == 0) {
         ary[position[0]][position[1]] = 0;
-        ary[position[0]][position[1] + 1] = 2;
+        ary[position[0]][position[1] + 1] = 4;
         position = [position[0], position[1] + 1];
     }
     init();
@@ -102,7 +118,7 @@ function move_right() {
 function move_left() {
     if ((ary[position[0]][position[1] - 1]) == 0) {
         ary[position[0]][position[1]] = 0;
-        ary[position[0]][position[1] - 1] = 2;
+        ary[position[0]][position[1] - 1] = 4;
         position = [position[0], position[1] - 1];
     }
     init();
