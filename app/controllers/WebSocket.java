@@ -41,7 +41,7 @@ public class WebSocket extends WebSocketController {
 			if(e instanceof WebSocketFrame) {
                   WebSocketFrame frame = (WebSocketFrame)e;
                   if(!e.isBinary) {
-                      if(frame.textData.equals("update")) {
+                      if(frame.textData.equals("updatemap")) {
 						  	outbound.send(Init.maze1.getMap());						
                       } 
                   }
