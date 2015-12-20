@@ -31,24 +31,6 @@ var loop = function () {
     }, 500);
 }
 
-//function posting() {
-//    jQuery.ajax(
-//            "/map_st", {
-//                type: "WS",
-//                dataType: 'text',
-//                data: {
-//                    "update": "update",
-//                },
-//                success: function (post) {
-//                    ary = post.map;
-//                    init();
-//                }
-//            }
-//            );
-//
-//    console.log("post");
-//}
-
 loop();
 
 var position = [1, 1];
