@@ -38,7 +38,14 @@ public class WebSocket extends WebSocketController {
 
 	public static void sendpoint(){
 		while(inbound.isOpen()){
-			
+			if(e instanceof WebSocketFrame) {
+                  WebSocketFrame frame = (WebSocketFrame)e;
+                  if(!e.isBinary) {
+                      if(frame.textData.equals("update")) {
+						  	outbound.send(Init.maze1.getMap());						
+                      } 
+                  }
+             }
 		}
 	}
 }

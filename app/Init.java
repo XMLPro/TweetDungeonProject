@@ -24,9 +24,10 @@ public class Init extends Job{
     //		Player player1 = new Player();
     //		maze1.init(maze1, player1, 9);// 迷路初期化
     //    }
+    public static maze1;
     public void doJob() {
         Logger.info("STARTING:::");
-        MazeGenerate maze1 = new MazeGenerate();
+        maze1 = new MazeGenerate();
         //MyStatusListener lisner = new MyStatusListener();
         Tw listener = new Tw();
         TwitterStream stream = listener.getTwitterStreaming();
