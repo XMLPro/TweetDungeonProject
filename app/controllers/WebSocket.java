@@ -22,6 +22,7 @@ public class WebSocket extends WebSocketController {
 			}
 			if(e instanceof WebSocketClose) {
 	            Logger.info("Socket closed!");
+				ManageSession.removeSession(session.getId());	
 	        }
 		}
 	}
