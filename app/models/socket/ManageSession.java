@@ -20,6 +20,10 @@ public class ManageSession{
 	  }
   }
   
+  public static void removeSession(String id){
+    socket_sessions.remove(socket_sessions.indexOf(id));
+  }
+  
   public static List getTweets(String socket_id){
 	  List tmp =  socket_sessions.get(socket_sessions.indexOf(socket_id)).getStockedTweets();
 	  socket_sessions.get(socket_sessions.indexOf(socket_id)).clean();

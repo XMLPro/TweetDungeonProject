@@ -16,19 +16,36 @@ public class WebSocket extends WebSocketController {
 		while(inbound.isOpen()){
 			ManageSession.createSession(session.getId());
 			WebSocketEvent e = await(inbound.nextEvent());
-			List<String> se = ManageSession.getTweets(session.getId());
-			for(String str: (ArrayList<String>)se){
-				outbound.send(str);
-			}
+			 if(e instanceof WebSocketFrame) {
+                  WebSocketFrame frame = (WebSocketFrame)e;
+                  if(!e.isBinary) {
+                      if(frame.textData.equals("update")) {
+						List<String> se = ManageSession.getTweets(session.getId());
+						if(!((ArrayList)se).isEnpty()){
+							for(String str: (ArrayList<String>)se){
+								outbound.send(str);
+							}
+						}
+                      } 
+                  }
+             }
 			if(e instanceof WebSocketClose) {
 	            Logger.info("Socket closed!");
+				ManageSession.removeSession(session.getId());	
 	        }
 		}
 	}
 
 	public static void sendpoint(){
 		while(inbound.isOpen()){
-
+			if(e instanceof WebSocketFrame) {
+                  WebSocketFrame frame = (WebSocketFrame)e;
+                  if(!e.isBinary) {
+                      if(frame.textData.equals("update")) {
+						  	outbound.send(Init.maze1.getMap());						
+                      } 
+                  }
+             }
 		}
 	}
 }

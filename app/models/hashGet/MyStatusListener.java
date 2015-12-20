@@ -74,6 +74,7 @@ class MyStatusListener implements StatusListener{
 		*/
 			// ツイート内容表示
 			System.out.println("テキスト:" + text);
+			ManageSession.postTweet(text);
 			// Commandクラスでツイート内容を整形
 			Command cm = new Command();
 			cm.com(text, time);
