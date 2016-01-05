@@ -33,7 +33,7 @@ public class Init extends Job{
         player1 = new Player();
         System.out.println("px: " + player1.getPlayerX());
         System.out.println("py: " + player1.getPlayerY());
-        maze1.init(maze1, player1, 9);
+        maze1.init(maze1, player1, 15);
         //MyStatusListener lisner = new MyStatusListener();
         Tw listener = new Tw();
         TwitterStream stream = listener.getTwitterStreaming();

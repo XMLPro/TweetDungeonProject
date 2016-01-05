@@ -27,7 +27,7 @@ public class MyStatusListener implements StatusListener{
 	private static final String ACCESS_TOKEN_SECRET = Key.  ACCESS_TOKEN_SECRET;
 
 	// 取得するハッシュタグ
-	private static String[] track = {"#はっしゅてすと"};
+	private static String[] track = {"#はっしゅてすと", "#XMLPro", "#迷路", "#xmlpro"};
 	// 大人数のときのツイートを入れるリスト
 	private List buf = new ArrayList();
 	// 前のツイートの時間（大人数との切り替え）
