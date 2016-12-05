@@ -22,10 +22,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="TweetDungeonProject" />
         <module name="twitterdungeon" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="TweetDungeonProject" target="1.8" />
       <module name="twitterdungeon" target="1.8" />
     </bytecodeTargetLevel>
   </component>

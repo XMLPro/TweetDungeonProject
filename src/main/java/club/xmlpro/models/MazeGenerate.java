@@ -1,0 +1,127 @@
+package club.xmlpro.models;
+
+public class MazeGenerate implements MazeImp{
+    final int HEIGHT =  15;
+    final int WIDTH = 15;
+    private int[][] dungeon;
+    private Block[][] dungeonBlock;
+    public MazeGenerate(){
+        dungeon = new int[HEIGHT][WIDTH];
+        for (int i = 0; i < HEIGHT; i++){
+            for (int j = 0; j < WIDTH; j++){
+                dungeon[i][j] = 0;
+            }
+        }
+    }
+
+    @Override
+    public int[][] getDungeonMap() {
+        return dungeon;
+    }
+
+    @Override
+    public Block[][] getDungeonMapBlock() {
+        return dungeonBlock;
+    }
+
+
+    /*
+    private static int[][] map;// 0 or 1 or 2 or 3 or 4
+    private Block[][] block;
+
+    private int[] dx = {0, 1, 0, -1};
+    private int[] dy = {1, 0, -1, 0};
+
+    public void init(MazeGenerate maze, Player player, int side){
+        if ( side%2 == 1){
+            map = new int[side][side];
+            player.setPlayer(1, 1);
+            makeMaze();
+            maze.setMap(1,1,4);
+            setBlock(side);
+        }else{
+            System.out.println("奇数を入力してください");
+        }
+    }
+
+    private void setBlock(int side){//引数はmapの方がいいか
+        block = new Block[side][side];
+        for (int i = 0 ; i < map.length ; i++){
+            for (int j = 0 ; j < map[0].length ; j++){
+                block[i][j] = new Block(map[i][j]);
+            }
+        }
+    }
+    public Block[][] getBlock(){
+        return this.block;
+    }
+    public Block getPointBlock(int i,int j){
+        return this.block[i][j];
+    }
+
+    public void setMap(int x, int y, int i){
+        //mapの(x,y)座標に キャラクター or 床 or 壁 をセット
+        map[x][y] = i;
+        System.out.println("x: " + x);
+        System.out.println("y: " + y);
+        for(int t=0;t<map.length-1;t++){
+            for(int j=0;j<map[t].length-1;j++){
+                System.out.print(map[t][j]);
+            }
+            System.out.println();
+        }
+    }
+    public int[][] getMap(){
+        return map;
+    }
+    public int getPointMap(int i,int j){
+        return map[i][j];
+    }
+    //迷路生成
+    private void makeMaze(){
+
+        for (int i = 0 ; i < map.length ; i++){
+            for (int j = 0 ; j < map[0].length ; j++){
+                map[i][j] = 0;
+            }
+        }
+
+        //外壁の生成
+        for (int i = 0 ; i < map.length ; i++){
+            map[0][i] = 1;
+            map[map.length-1][i] = 1;
+            map[i][0] = 1;
+            map[i][map[0].length-1] = 1;
+        }
+        //ゴールの作成 - 下の列の１つを床にする。ゴールは3
+        map[map.length-1][map[map.length-1].length-2] = 3;
+
+        // 棒倒し法による支柱をセット
+        for (int i = 1 ; i <= (map.length-2)/2 ; i++){
+            for (int j = 1 ; j <= (map[0].length-2)/2 ; j++){
+                map[i * 2][j * 2] = 1;
+            }
+        }
+
+
+		/* 迷路作成
+        for (int i = 1 ; i <= (map.length-2)/2 ; i++){
+            for (int j = 1 ; j <= (map[0].length-2)/2 ; j++){
+                if (i == 1){
+                    int d = (int)(Math.random() * 4);
+                    map[i * 2 + dx[d]][j * 2 + dy[d]] = 1;
+                }else{
+                    boolean flag = true;
+                    while(flag){
+                        int d = (int)(Math.random() * 3);
+                        if (map[i * 2 + dx[d]][j * 2 + dy[d]] == 0){
+                            map[i * 2 + dx[d]][j * 2 + dy[d]] = 1;
+                            flag = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    */
+}
