@@ -1,4 +1,4 @@
-package club.xmlpro.dungeon.maze;
+package club.xmlpro.models;
 
 public class MazeModel {
     int[][] map;

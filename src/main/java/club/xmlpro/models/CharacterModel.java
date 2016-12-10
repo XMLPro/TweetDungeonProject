@@ -1,4 +1,4 @@
-package club.xmlpro.dungeon;
+package club.xmlpro.models;
 
 public class CharacterModel {
     private int x, y;
