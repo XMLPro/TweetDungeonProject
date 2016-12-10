@@ -80,6 +80,11 @@ public class Dungeon implements DungeonImp{
     }
 
     @MessageMapping("/dungeon")
+    public void ok(){
+    }
+
+
+    @MessageMapping("/map")
     @SendTo("/topic/map")
     public MazeModel getMaze(){
         return new MazeModel(maze.getMap());
