@@ -14,6 +14,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 
@@ -23,6 +24,8 @@ public class Dungeon implements DungeonImp{
     private Character character;
     private Maze maze;
 
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
     @Autowired
     ApplicationEventPublisher publisher;
 
@@ -44,8 +47,7 @@ public class Dungeon implements DungeonImp{
     }
 
     @EventListener
-    @SendTo("/topic/character")
-    public CharacterModel moveCharacter(MoveCharacterEvent event){
+    public void moveCharacter(MoveCharacterEvent event){
         logger.info("moving");
         switch (event.getDirectionType()){
             case UP:
@@ -70,7 +72,8 @@ public class Dungeon implements DungeonImp{
                 break;
         }
         if (maze.isGoal(character.getPointX(), character.getPointY())) publisher.publishEvent(new GoalEvent(this));
-        return new CharacterModel(character.getPointX(), character.getPointY());
+        simpMessagingTemplate.convertAndSend("/topic/character", new CharacterModel(character.getPointX(), character.getPointY()));
+        //return new CharacterModel(character.getPointX(), character.getPointY());
     }
 
     private void setCharacterPoints(int x, int y){
@@ -79,14 +82,9 @@ public class Dungeon implements DungeonImp{
         character.moveY(y);
     }
 
-    @MessageMapping("/dungeon")
-    public void ok(){
-    }
-
 
     @MessageMapping("/map")
-    @SendTo("/topic/map")
-    public MazeModel getMaze(){
-        return new MazeModel(maze.getMap());
+    public void getaaze(){
+        simpMessagingTemplate.convertAndSend("/topic/map" , new MazeModel(maze.getMap()));
     }
 }
