@@ -1,5 +1,6 @@
 package club.xmlpro.dungeon.maze.block;
 
+import club.xmlpro.dungeon.maze.BlockType;
 import club.xmlpro.dungeon.maze.block.blocks.GoalBlock;
 import club.xmlpro.dungeon.maze.block.blocks.RoadBlock;
 import club.xmlpro.dungeon.maze.block.blocks.StartBlock;

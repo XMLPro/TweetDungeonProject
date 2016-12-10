@@ -1,4 +1,9 @@
 package club.xmlpro.event;
 
-public class GoalEvent {
+import org.springframework.context.ApplicationEvent;
+
+public class GoalEvent extends ApplicationEvent{
+    public GoalEvent(Object source) {
+        super(source);
+    }
 }

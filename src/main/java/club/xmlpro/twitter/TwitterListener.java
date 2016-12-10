@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 import twitter4j.*;
 
+@Component
 public class TwitterListener implements StatusListener{
     private static final Logger logger = LoggerFactory.getLogger(TwitterListener.class);
     @Autowired
@@ -16,9 +17,8 @@ public class TwitterListener implements StatusListener{
 
     @Override
     public void onStatus(Status status) {
-        //String tweet = status.getText();
-        //String analyzeText = tweet.replace(TwitterConfig.TWITTER_ACCOUNT, "");
-        publisher.publishEvent(new AnalyzeEvent(this));
+        logger.info("get tweet");
+        publisher.publishEvent(new AnalyzeEvent(this, status.getText()));
     }
 
     @Override

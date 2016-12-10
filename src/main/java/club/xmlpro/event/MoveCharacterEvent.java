@@ -1,16 +1,16 @@
 package club.xmlpro.event;
 
-import club.xmlpro.dungeon.character.MoveCharacterDirection;
+import club.xmlpro.dungeon.DirectionType;
 import org.springframework.context.ApplicationEvent;
 
 public class MoveCharacterEvent extends ApplicationEvent {
-    private MoveCharacterDirection moveCharacterDirection;
-    public MoveCharacterEvent(Object source, MoveCharacterDirection moveCharacterDirection) {
+    private DirectionType directionType;
+    public MoveCharacterEvent(Object source, DirectionType directionType) {
         super(source);
-        this.moveCharacterDirection = moveCharacterDirection;
+        this.directionType = directionType;
     }
 
-    public MoveCharacterDirection direction(){
-        return moveCharacterDirection;
+    public DirectionType getDirectionType() {
+        return directionType;
     }
 }

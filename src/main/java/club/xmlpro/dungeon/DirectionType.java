@@ -1,6 +1,6 @@
-package club.xmlpro.dungeon.maze;
+package club.xmlpro.dungeon;
 
-public enum DirectionList {
+public enum DirectionType {
     UP(0),
     DOWN(1),
     RIGHT(2),
@@ -8,7 +8,7 @@ public enum DirectionList {
 
     private final int directionNumber;
 
-    DirectionList(int directionNumber) {
+    DirectionType(int directionNumber) {
         this.directionNumber = directionNumber;
     }
 

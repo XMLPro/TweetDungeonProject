@@ -1,4 +1,4 @@
-package club.xmlpro.dungeon.maze.block;
+package club.xmlpro.dungeon.maze;
 
 public enum BlockType {
     START(0),

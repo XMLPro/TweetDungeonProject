@@ -1,8 +1,8 @@
 package club.xmlpro.dungeon.maze;
 
+import club.xmlpro.dungeon.DirectionType;
 import club.xmlpro.dungeon.maze.block.Block;
 import club.xmlpro.dungeon.maze.block.BlockFactory;
-import club.xmlpro.dungeon.maze.block.BlockType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,12 +42,12 @@ public class GenerateMaze implements MazeImp{
         setStartAndGoal();
     }
 
-    private ArrayList<DirectionList> getRandomDirection(){
-        ArrayList<DirectionList> direction = new ArrayList<>();
-        direction.add(DirectionList.UP);
-        direction.add(DirectionList.DOWN);
-        direction.add(DirectionList.RIGHT);
-        direction.add(DirectionList.LEFT);
+    private ArrayList<DirectionType> getRandomDirection(){
+        ArrayList<DirectionType> direction = new ArrayList<>();
+        direction.add(DirectionType.UP);
+        direction.add(DirectionType.DOWN);
+        direction.add(DirectionType.RIGHT);
+        direction.add(DirectionType.LEFT);
         Collections.shuffle(direction);
         return direction;
     }
@@ -62,7 +62,7 @@ public class GenerateMaze implements MazeImp{
 
     private void digMap(int x, int y){
         blockTypeMap[x][y] = BlockType.ROAD;
-        ArrayList<DirectionList> direction = getRandomDirection();
+        ArrayList<DirectionType> direction = getRandomDirection();
         for (int i = 0; i < direction.size(); i++){
             switch (direction.get(i)) {
                 case UP:
