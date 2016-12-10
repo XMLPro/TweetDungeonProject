@@ -38,6 +38,8 @@ public class GenerateMaze implements MazeImp{
         digMap(startX, startY);
         generateMap();
         generateBlockMap();
+        detectGoal();
+        setStartAndGoal();
     }
 
     private ArrayList<DirectionList> getRandomDirection(){
@@ -109,9 +111,17 @@ public class GenerateMaze implements MazeImp{
         }
     }
 
-    /*private void detectGoal(){
-        for (int i = blockTypeMap.length-1; i)
-    }*/
+    private void detectGoal(){
+        for (int i = blockTypeMap.length-1; i > 0; i--){
+            for (int j = blockTypeMap[i].length-1; j > 0; j--){
+                if (map[i][j] == BlockType.ROAD.getBlockNumber()){
+                    goalX = i;
+                    goalY = j;
+                    return;
+                }
+            }
+        }
+    }
 
     private void generateBlockMap(){
         BlockFactory blockFactory = new BlockFactory();
@@ -120,6 +130,16 @@ public class GenerateMaze implements MazeImp{
                  blockMap[i][j] = blockFactory.getInstance(blockTypeMap[i][j]);
             }
         }
+    }
+
+    private void setStartAndGoal(){
+        BlockFactory blockFactory = new BlockFactory();
+        //start
+        map[startX][startY] = BlockType.START.getBlockNumber();
+        blockMap[startX][startY] =  blockFactory.getInstance(BlockType.START);
+        //goal
+        map[goalX][goalY] = BlockType.GOAL.getBlockNumber();
+        blockMap[goalX][goalY] =  blockFactory.getInstance(BlockType.GOAL);
     }
 
     @Override
