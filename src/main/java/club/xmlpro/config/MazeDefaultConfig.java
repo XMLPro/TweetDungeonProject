@@ -1,4 +1,4 @@
-package club.xmlpro.dungeon.maze;
+package club.xmlpro.config;
 
 public class MazeDefaultConfig {
     public static final int DUNGEON_MAP_WIDTH = 33;
