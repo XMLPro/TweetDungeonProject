@@ -4,8 +4,9 @@ import org.springframework.context.ApplicationEvent;
 
 public class AnalyzeEvent extends ApplicationEvent {
     private String tweet;
-    public AnalyzeEvent(Object source) {
+    public AnalyzeEvent(Object source, String tweet) {
         super(source);
+        this.tweet = tweet;
     }
 
     public String getTweet() {

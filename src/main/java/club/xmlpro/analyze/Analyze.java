@@ -1,17 +1,17 @@
 package club.xmlpro.analyze;
 
-import club.xmlpro.dungeon.character.MoveCharacterDirection;
+import club.xmlpro.config.TwitterConfig;
+import club.xmlpro.dungeon.DirectionType;
 import club.xmlpro.event.AnalyzeEvent;
 import club.xmlpro.event.MoveCharacterEvent;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
 
 //The singleton class method
 
@@ -26,35 +26,35 @@ public class Analyze {
 
     @EventListener
     public void analyze(AnalyzeEvent event) throws TwitterException {
+        logger.info("start analyze");
+        logger.info(event.getTweet());
         int analyzePointer = 0;
-        //Twitter twitter = TwitterFactory.getSingleton();
-        //twitter.updateStatus("aa");
-        logger.info("ok");
-        //String[] analyzeText = event.getTweet().split(" ");
-        //logger.info(String.valueOf(analyzeText.length));
-        String[] analyzeText = event.getTweet().split(" ");
-        //logger.info(analyzeText[0]);
-        if (analyzeText[0] == null){
+        String tweet = event.getTweet().replace(TwitterConfig.TWITTER_ACCOUNT, "");
+        String[] analyzeText = tweet.split(" ");
+        logger.info(analyzeText[0]);
+        logger.info(analyzeText[1]);
+        if (analyzeText[1] == null){
             logger.info("null");
-        }else switch (analyzeText[0]){
+        }else switch (analyzeText[1]){
             //move event
             case "up":
-                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, MoveCharacterDirection.UP));
+                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, DirectionType.UP));
                 break;
 
             case "down":
-                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, MoveCharacterDirection.DOWN));
+                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, DirectionType.DOWN));
                 break;
 
             case "right":
-                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, MoveCharacterDirection.RIGHT));
+                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, DirectionType.RIGHT));
                 break;
 
             case "left":
-                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, MoveCharacterDirection.LEFT));
+                publisher.publishEvent(new MoveCharacterEvent(Analyze.class, DirectionType.LEFT));
 
             default:
                 break;
         }
+
     }
 }
