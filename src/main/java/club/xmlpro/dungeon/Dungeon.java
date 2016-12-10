@@ -35,6 +35,7 @@ public class Dungeon implements DungeonImp{
     @EventListener
     public void startDungeon(ApplicationReadyEvent event){
         init(MazeDefaultConfig.DUNGEON_MAP_WIDTH, MazeDefaultConfig.DUNGEON_MAP_HEIGHT, MazeDefaultConfig.CHARACTER_START_X, MazeDefaultConfig.CHARACTER_START_Y);
+        logger.info("create map");
     }
 
     @EventListener
@@ -78,7 +79,7 @@ public class Dungeon implements DungeonImp{
         character.moveY(y);
     }
 
-    @MessageMapping("/app/map")
+    @MessageMapping("/dungeon")
     @SendTo("/topic/map")
     public MazeModel getMaze(){
         return new MazeModel(maze.getMap());
