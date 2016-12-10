@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>test</title>
+    <title>Hello WebSocket</title>
+    <script src="/webjars/sockjs-client/1.1.1/sockjs.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3/stomp.js"></script>
+    <script type="text/javascript">
+        var socket = new SockJS('/dungeon'); // WebSocketに接続
+        stompClient = Stomp.over(socket);
+        stompClient.connect({ }, function (frame) {
+            stompClient.subscribe('/topic/character', function (character) { // 挨拶の応答(/topic/greetings)を購読する
+                console.log("a");
+            });
+        });
+
+
+
+
+    </script>
 </head>
 <body>
+<div>
 
+</div>
 </body>
 </html>
