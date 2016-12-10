@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import twitter4j.TwitterException;
 
@@ -24,18 +25,25 @@ public class Analyze {
     @Autowired
     private ApplicationEventPublisher publisher;
 
+    @Async("analyzeTaskExecutor")
     @EventListener
     public void analyze(AnalyzeEvent event) throws TwitterException {
-        logger.info("start analyze");
-        logger.info(event.getTweet());
         int analyzePointer = 0;
+        String[] token = event.getTweet().replace(TwitterConfig.TWITTER_ACCOUNT, "").trim().split("\\s+");
         String tweet = event.getTweet().replace(TwitterConfig.TWITTER_ACCOUNT, "");
         String[] analyzeText = tweet.split(" ");
         logger.info(analyzeText[0]);
         logger.info(analyzeText[1]);
-        if (analyzeText[1] == null){
+
+        /*
+        while (analyzePointer < token.length){
+            if ()
+        }
+        */
+
+        if (analyzeText[analyzePointer] == null){
             logger.info("null");
-        }else switch (analyzeText[1]){
+        }else switch (analyzeText[analyzePointer]){
             //move event
             case "up":
                 publisher.publishEvent(new MoveCharacterEvent(Analyze.class, DirectionType.UP));
@@ -55,6 +63,5 @@ public class Analyze {
             default:
                 break;
         }
-
     }
 }

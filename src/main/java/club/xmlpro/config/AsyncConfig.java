@@ -10,13 +10,12 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @EnableAsync
 public class AsyncConfig {
     @Bean
-    public AsyncTaskExecutor twitterTaskExecutor(){
+    public AsyncTaskExecutor analyzeTaskExecutor(){
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setMaxPoolSize(10);
+        executor.setMaxPoolSize(100);
         return executor;
     }
 
-    //default executor
     @Bean
     public AsyncTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
