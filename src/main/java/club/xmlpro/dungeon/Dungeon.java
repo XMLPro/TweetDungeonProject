@@ -76,6 +76,12 @@ public class Dungeon implements DungeonImp{
         //return new CharacterModel(character.getPointX(), character.getPointY());
     }
 
+    // debug用
+    @MessageMapping("/character")
+    public void getPosition(){
+        simpMessagingTemplate.convertAndSend("/topic/character" , new CharacterModel(character.getPointX(), character.getPointY()));
+    }
+
     private void setCharacterPoints(int x, int y){
         logger.info("ok");
         character.moveX(x);
