@@ -1,0 +1,23 @@
+.block{
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+.win{
+  height: 50px;
+  width: 100px;
+  margin-left: 50px;
+}
+
+.black{
+  background: url('/img/block.png');
+}
+
+.white{
+  background: url('/img/land.png');
+}
+
+.clr{
+  clear: both;
+}

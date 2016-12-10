@@ -4,23 +4,110 @@
     <title>Hello WebSocket</title>
     <script src="/webjars/sockjs-client/1.1.1/sockjs.js"></script>
     <script src="/webjars/stomp-websocket/2.3.3/stomp.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/meiro.js"></script>
     <script type="text/javascript">
-        var socket = new SockJS('/dungeon'); // WebSocketに接続
+        socket = new SockJS('/dungeon'); // WebSocketに接続
+        position = [1,1];
         stompClient = Stomp.over(socket);
         stompClient.connect({ }, function (frame) {
-            stompClient.subscribe('/topic/character', function (character) { // 挨拶の応答(/topic/greetings)を購読する
-                console.log("a");
+            stompClient.subscribe('/topic/map', function (map) {
+                m = map;
+                //ary = JSON.parse(map.body).content;
+                console.log(map);
+            });
+            stompClient.subscribe('/topic/character', function (character) {
+                console.log('topic/c');
+                console.log(character);
+                c = character;
             });
         });
-
-
-
-
     </script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/block.css">
 </head>
 <body>
-<div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
 
+        <!--ブランド名 ロゴ名の表示-->
+        <a class="navbar-brand" href="/">LOGO</a>
+
+        <!--トグルボタンの設置-->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div id="nav-content" class="collapse navbar-collapse">
+
+        <!--リンクのリスト メニューリスト-->
+        <ul class="nav navbar-nav">
+            <li><a href="/Application/console">console</a></li>
+            <li><a href="">Link2</a></li>
+            <li><a href="">Link3</a></li>
+
+            <!--ドロップダウン化するliタグ-->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" href="">Drop  <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Link1</a></li>
+                    <li><a href="#">Link2</a></li>
+                    <li><a href="#">Link3</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Link A</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">LInk B</a></li>
+                </ul>
+            </li>
+        </ul>
+
+
+        <!--検索フォーム-->
+        <form class="navbar-form navbar-right" role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</nav>
+<!--ナビゲーションバーここまで-->
+
+<header class="jumbotron">
+
+    <div class="container" style="background:xmlproKanban.jpg;">
+        <h1>迷路</h1>
+        <p><span><h2>＃XMLPro</h2>でツイートしてみよう</span></p>
+        <p>コマンドは　みぎ、ひだり、うえ、した の4つになります</p>
+        <!--twitterボタン-->
+        <a href="https://twitter.com/intent/tweet?button_hashtag=XMLPro" class="twitter-hashtag-button" data-related="hira_831">Tweet #XMLPro</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="hira_831">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <!--twitterここまで-->
+
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12" id="map">
+        </div>
+
+        <form>
+            <center>
+            </center>
+        </form>
+    </div>
 </div>
+<script type="text/javascript">
+    (function () {
+        init();
+    }());
+</script>
 </body>
 </html>
