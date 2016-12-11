@@ -28,12 +28,9 @@ public class Analyze {
     @Async("analyzeTaskExecutor")
     @EventListener
     public void analyze(AnalyzeEvent event) throws TwitterException {
-        int analyzePointer = 1;
+        int analyzePointer = 0;
         String[] token = event.getTweet().replace(TwitterConfig.TWITTER_ACCOUNT, "").trim().split("\\s+");
-        String tweet = event.getTweet().replace(TwitterConfig.TWITTER_ACCOUNT, "");
-        String[] analyzeText = tweet.split(" ");
-        logger.info(analyzeText[0]);
-        logger.info(analyzeText[1]);
+
 
         /*
         while (analyzePointer < token.length){
@@ -41,9 +38,9 @@ public class Analyze {
         }
         */
 
-        if (analyzeText[analyzePointer] == null){
+        if (token[analyzePointer] == null){
             logger.info("null");
-        }else switch (analyzeText[analyzePointer]){
+        }else switch (token[analyzePointer]){
             //move event
             case "up":
                 publisher.publishEvent(new MoveCharacterEvent(Analyze.class, DirectionType.UP));
