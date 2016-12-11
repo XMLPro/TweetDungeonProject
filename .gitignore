@@ -14,6 +14,7 @@
 .mvn
 .idea
 *.iws
+src/main/java/club/xmlpro/config/TwitterConfig.java
 *.iml
 *.ipr
 
