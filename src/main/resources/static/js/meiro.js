@@ -17,7 +17,7 @@ function init() {
 
             if (ary[i][j] == 1) {
                 var black = document.createElement('div');
-                black.className = 'block black';
+                black.className = 'block';
                 map.appendChild(black);
             } else if (ary[i][j] == 0) {
                 var white = document.createElement('div');
