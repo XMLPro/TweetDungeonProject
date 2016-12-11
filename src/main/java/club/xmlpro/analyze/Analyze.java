@@ -28,7 +28,7 @@ public class Analyze {
     @Async("analyzeTaskExecutor")
     @EventListener
     public void analyze(AnalyzeEvent event) throws TwitterException {
-        int analyzePointer = 0;
+        int analyzePointer = 1;
         String[] token = event.getTweet().replace(TwitterConfig.TWITTER_ACCOUNT, "").trim().split("\\s+");
         String tweet = event.getTweet().replace(TwitterConfig.TWITTER_ACCOUNT, "");
         String[] analyzeText = tweet.split(" ");
